@@ -1,0 +1,33 @@
+<h1 id="webpack-">webpack相关</h1>
+<h2 id="build">build</h2>
+<p>build 文件夹下共分为3个主要文件</p>
+<ul>
+<li><a href="#/templates/vue/webpack/webpack-build.md">build.js</a> </li>
+<li><a href="#/templates/vue/webpack/webpack-check-versions.md">check-versions.js</a></li>
+<li><a href="#/templates/vue/webpack/webpack-utils.md">utils.js</a></li>
+</ul>
+<h3 id="1-build-js">1.build.js</h3>
+<p>build.js 是 项目执行 npm run build 后所执行的 node 文件, 即 #npm
+run build = #node ./build/build.js,开发者在生产模式下打包所用.</p>
+<p><strong>引用模块:</strong></p>
+<p><a href="#/templates/vue/webpack/webpack-check-versions.md">check-versions.js</a>: npm及依赖所需版本检查,如果低于最低使用版本即退出 build</p>
+<p><a href="https://www.npmjs.com/package/ora">ora</a>: 命令行loading,success等图标</p>
+<p><a href="https://www.npmjs.com/package/rm">rm</a>:删除某个路径下所有文件夹及文件</p>
+<p><a href="https://www.npmjs.com/package/path">path</a>: 路径获取</p>
+<p><a href="https://www.npmjs.com/package/chalk">chalk</a>: 控制台字体美化</p>
+<p><strong>该模块主要核心方法 webpack(config, error) ,即为当前项目生产模式下打包</strong></p>
+<p>工作流程:</p>
+<p>1.检测npm等版本是否符合要求</p>
+<p>require(&#39;./check-versions&#39;)()</p>
+<p>2.删除dist文件夹以及assets文件夹</p>
+<p>rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err =&gt; {})</p>
+<p>3.进行webpack打包,重新生成 dist 文件夹</p>
+<p>webpack(webpackConfig, (err, stats) =&gt; {})</p>
+<p>额外配置    配置打包完成后控制台信息输出</p>
+<p>process.stdout.write(stats.toString({
+colors: true,
+modules: false,
+children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+chunks: false,
+chunkModules: false
+}) + &#39;\n\n&#39;)</p>

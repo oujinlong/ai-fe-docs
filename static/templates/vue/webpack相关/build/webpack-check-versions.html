@@ -1,0 +1,42 @@
+<h1 id="webpack-">webpack相关</h1>
+<h2 id="build">build</h2>
+<p>build 文件夹下共分为3个主要文件</p>
+<ul>
+<li><a href="#/templates/vue/webpack/webpack-build.md">build.js</a> </li>
+<li><a href="#/templates/vue/webpack/webpack-check-versions.md">check-versions.js</a></li>
+<li><a href="#/templates/vue/webpack/webpack-utils.md">utils.js</a></li>
+</ul>
+<h3 id="2-check-versions-js">2.check-versions.js</h3>
+<p>check-versions 用来检测node和npm版本</p>
+<p><strong>引用模块:</strong></p>
+<p><a href="https://www.npmjs.com/package/chalk">chalk</a>: 控制台字体美化</p>
+<p><a href="https://www.npmjs.com/package/semver">semver</a>: 语义化版本控制规范</p>
+<p><a href="https://www.npmjs.com/package/shell">shell</a>: 执行Unix系统命令</p>
+<p>该模块主要核心方法 semver.satisfies(currentVersion, requirementVersion) ,即通过smever进行版本匹配,返回 true 或 false</p>
+<p><strong>工作流程:</strong></p>
+<p>1.获取node当前版本号以及项目package.json所要求最低版本号</p>
+<pre><code>    const versionRequirements = [
+          {
+            name: '<span class="hljs-keyword">node</span><span class="hljs-title">',
+            currentVersion</span>: semver.clean(process.<span class="hljs-keyword">version</span>),
+            versionRequirement: packageConfig.engines.node
+          }
+    ]
+</code></pre><p>2.获取npm当前版本号以及项目package.json所要求最低版本号</p>
+<pre><code>       <span class="hljs-selector-tag">if</span> (shell.which(<span class="hljs-string">'npm'</span>)) {
+   <span class="hljs-selector-tag">versionRequirements</span><span class="hljs-selector-class">.push</span>({
+        <span class="hljs-attribute">name</span>: <span class="hljs-string">'npm'</span>,
+        <span class="hljs-attribute">currentVersion</span>: exec(<span class="hljs-string">'npm --version'</span>),
+        <span class="hljs-attribute">versionRequirement</span>: packageConfig.engines.npm
+      })
+    }
+    <span class="hljs-comment">// #shell.which('npm')</span>
+   <span class="hljs-comment">//    返回npm绝对路径，否则返回null</span>
+</code></pre><p>3.通过semver.satisfies()方法进行版本匹配</p>
+<pre><code><span class="hljs-selector-tag">semver</span><span class="hljs-selector-class">.satisfies</span>(<span class="hljs-selector-tag">mod</span><span class="hljs-selector-class">.currentVersion</span>, <span class="hljs-selector-tag">mod</span><span class="hljs-selector-class">.versionRequirement</span>
+</code></pre><p>4.提示信息</p>
+<pre><code><span class="hljs-keyword">for</span> (let <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; warnings.<span class="hljs-built_in">length</span>; <span class="hljs-built_in">i</span>++) {
+  const warning = warnings[i]
+  console.log(<span class="hljs-string">'  '</span> + warning)
+}
+</code></pre>
