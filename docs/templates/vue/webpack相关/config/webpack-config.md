@@ -62,6 +62,25 @@ index.js 是config的入口文件, 分为 **dev** 和 **build** 配置
 	 
  **build配置:**
  
+	 index: path.resolve(__dirname, '../dist/index.html')
+	index 编译后index.html的路径
+	
+    productionSourceMap: true
+    是否开始 sourceMap
+   
+    devtool: '#source-map'
+     webpack提供的用来方便调试的配置(详情见最下方附表)
+
+   
+    productionGzip: false
+    是否压缩
+    
+    productionGzipExtensions: ['js', 'css']
+	gzip模式下需要压缩的文件的扩展名，设置后会对相应扩展名的文件进行压缩
+	
+    bundleAnalyzerReport: process.env.npm_config_report
+ 	是否开启打包后的分析报告
+   	 
 **附:devtool配置表**
 
 ![devtool](https://github.com/oujinlong/ai-fe-docs/blob/master/docs/templates/vue/webpack%E7%9B%B8%E5%85%B3/config/devtool.png?raw=true)

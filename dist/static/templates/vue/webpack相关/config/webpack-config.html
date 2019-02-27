@@ -56,6 +56,24 @@
  <span class="hljs-string">cacheBusting</span>
  <span class="hljs-string">一个配合devtool的配置，当给文件名插入新的hash导致清楚缓存时是否生成souce</span> <span class="hljs-string">maps，默认在开发环境下为true</span>
 </code></pre><p> <strong>build配置:</strong></p>
-<p><strong>附:devtool配置表</strong></p>
+<pre><code> <span class="hljs-built_in">index</span>: path.<span class="hljs-built_in">resolve</span>(__dirname, <span class="hljs-string">'../dist/index.html'</span>)
+<span class="hljs-built_in">index</span> 编译后<span class="hljs-built_in">index</span>.html的路径
+
+productionSourceMap: true
+是否开始 sourceMap
+
+devtoo<span class="hljs-variable">l:</span> <span class="hljs-string">'#source-map'</span>
+ webpack提供的用来方便调试的配置(详情见最下方附表)
+
+
+productionGzip: false
+是否压缩
+
+productionGzipExtension<span class="hljs-variable">s:</span> [<span class="hljs-string">'js'</span>, <span class="hljs-string">'css'</span>]
+gzip模式下需要压缩的文件的扩展名，设置后会对相应扩展名的文件进行压缩
+
+bundleAnalyzerRepor<span class="hljs-variable">t:</span> process.env.npm_config_report
+ 是否开启打包后的分析报告
+</code></pre><p><strong>附:devtool配置表</strong></p>
 <p><img src="https://github.com/oujinlong/ai-fe-docs/blob/master/docs/templates/vue/webpack%E7%9B%B8%E5%85%B3/config/devtool.png?raw=true" alt="devtool">
   <strong>+++ super fast, ++ fast, + pretty fast, o medium, - pretty slow, -- slow</strong></p>
