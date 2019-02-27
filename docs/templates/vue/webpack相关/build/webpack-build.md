@@ -2,9 +2,9 @@
 ## build
 build 文件夹下共分为3个主要文件
 
-* [build.js](#/templates/vue/webpack相关/webpack-build.md) 
-* [check-versions.js](#/templates/vue/webpack相关/webpack-check-versions.md)
-* [utils.js](#/templates/vue/webpacks相关/webpack-utils.md)
+* [build.js](#/templates/vue/webpack相关/build/webpack-build.md) 
+* [check-versions.js](#/templates/vue/webpack相关/build/webpack-check-versions.md)
+* [utils.js](#/templates/vue/webpacks相关/build/webpack-utils.md)
 
 
 ### 1.build.js
