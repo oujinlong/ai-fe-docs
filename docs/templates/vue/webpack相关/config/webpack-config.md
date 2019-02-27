@@ -65,7 +65,7 @@ index.js 是config的入口文件, 分为 **dev** 和 **build** 配置
 **附:devtool配置表**
 
 ![devtool](https://github.com/oujinlong/ai-fe-docs/blob/master/docs/templates/vue/webpack%E7%9B%B8%E5%85%B3/config/devtool.png?raw=true)
-  +++ super fast, ++ fast, + pretty fast, o medium, - pretty slow, -- slow
+  **+++ super fast, ++ fast, + pretty fast, o medium, - pretty slow, -- slow**
      
  
  
