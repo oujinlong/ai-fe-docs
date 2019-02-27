@@ -64,7 +64,7 @@ index.js 是config的入口文件, 分为 **dev** 和 **build** 配置
  
 **附:devtool配置表**
 
-![devtool](/assets/devtool.png)
+![devtool](../../../../../assets/devtool.png)
   +++ super fast, ++ fast, + pretty fast, o medium, - pretty slow, -- slow
      
  
