@@ -18,16 +18,17 @@ run build = #node ./build/build.js,开发者在生产模式下打包所用.</p>
 <p><strong>该模块主要核心方法 webpack(config, error) ,即为当前项目生产模式下打包</strong></p>
 <p>工作流程:</p>
 <p>1.检测npm等版本是否符合要求</p>
-<p>require(&#39;./check-versions&#39;)()</p>
-<p>2.删除dist文件夹以及assets文件夹</p>
-<p>rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err =&gt; {})</p>
-<p>3.进行webpack打包,重新生成 dist 文件夹</p>
-<p>webpack(webpackConfig, (err, stats) =&gt; {})</p>
-<p>额外配置    配置打包完成后控制台信息输出</p>
-<p>process.stdout.write(stats.toString({
-colors: true,
-modules: false,
-children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
-chunks: false,
-chunkModules: false
-}) + &#39;\n\n&#39;)</p>
+<pre><code><span class="hljs-function"><span class="hljs-title">require</span><span class="hljs-params">(<span class="hljs-string">'./check-versions'</span>)</span><span class="hljs-params">()</span></span>
+</code></pre><p>2.删除dist文件夹以及assets文件夹</p>
+<pre><code>rm(<span class="hljs-name">path</span>.join(<span class="hljs-name">config</span>.build.assetsRoot, config.build.assetsSubDirectory), err =&gt; {})
+</code></pre><p>3.进行webpack打包,重新生成 dist 文件夹</p>
+<pre><code>webpack(<span class="hljs-name">webpackConfig</span>, (<span class="hljs-name">err</span>, stats) =&gt; {})
+</code></pre><p>额外配置    配置打包完成后控制台信息输出</p>
+<pre><code><span class="hljs-string">process.stdout.write(stats.toString({</span>
+<span class="hljs-attr">colors:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+<span class="hljs-attr">modules:</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+<span class="hljs-attr">children:</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span> <span class="hljs-string">//</span> <span class="hljs-string">If</span> <span class="hljs-string">you</span> <span class="hljs-string">are</span> <span class="hljs-string">using</span> <span class="hljs-string">ts-loader,</span> <span class="hljs-string">setting</span> <span class="hljs-string">this</span> <span class="hljs-string">to</span> <span class="hljs-literal">true</span> <span class="hljs-string">will</span> <span class="hljs-string">make</span> <span class="hljs-string">TypeScript</span> <span class="hljs-string">errors</span> <span class="hljs-string">show</span> <span class="hljs-string">up</span> <span class="hljs-string">during</span> <span class="hljs-string">build.</span>
+<span class="hljs-attr">chunks:</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+<span class="hljs-attr">chunkModules:</span> <span class="hljs-literal">false</span>
+<span class="hljs-string">})</span> <span class="hljs-string">+</span> <span class="hljs-string">'\n\n'</span><span class="hljs-string">)</span>
+</code></pre>

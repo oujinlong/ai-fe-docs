@@ -29,23 +29,23 @@ run build = #node ./build/build.js,开发者在生产模式下打包所用.
 
 1.检测npm等版本是否符合要求
 
-require('./check-versions')()
+	require('./check-versions')()
 
 
 2.删除dist文件夹以及assets文件夹
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {})
+	rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {})
 
 3.进行webpack打包,重新生成 dist 文件夹
 
-webpack(webpackConfig, (err, stats) => {})
+	webpack(webpackConfig, (err, stats) => {})
 
 额外配置    配置打包完成后控制台信息输出
 
-process.stdout.write(stats.toString({
-colors: true,
-modules: false,
-children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
-chunks: false,
-chunkModules: false
-}) + '\n\n')
+	process.stdout.write(stats.toString({
+	colors: true,
+	modules: false,
+	children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+	chunks: false,
+	chunkModules: false
+	}) + '\n\n')

@@ -1,0 +1,46 @@
+<h1 id="webpack-">webpack相关</h1>
+<h2 id="others">others</h2>
+<h3 id="1-babelrc">1.babelrc</h3>
+<p>ES6是2015年发布的下一代javascript语言标准，它引入了新的语法和API，使我们编写js代码更加得心应手，比如class，let,for...of promise等等这样的，但是可惜的是这些js新特性只被最新版本的浏览器支持，但是低版本浏览器并不支持，那么低版本浏览器下就需要一个转换工具，把es6代码转换成浏览器能识别的代码，babel就是这样的一个工具。可以理解为 <strong>babel是javascript语法的编译器。</strong></p>
+<p><strong>1.1babelrc编译器:</strong></p>
+<p>在Babel执行编译的过程中，会从项目的根目录下的 .babelrc文件中读取配置。.babelrc是一个json格式的文件。
+在.babelrc配置文件中，主要是对预设(presets) 和 插件(plugins) 进行配置。.babelrc配置文件一般为如下：     </p>
+<pre><code>{
+  <span class="hljs-attr">"presets"</span>: [
+    [<span class="hljs-string">"env"</span>, {
+      <span class="hljs-attr">"modules"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"targets"</span>: {
+        <span class="hljs-attr">"browsers"</span>: [<span class="hljs-string">"&gt; 1%"</span>, <span class="hljs-string">"last 2 versions"</span>, <span class="hljs-string">"not ie &lt;= 8"</span>]
+      }
+    }],
+    <span class="hljs-string">"stage-2"</span>
+  ],
+  <span class="hljs-attr">"plugins"</span>: [<span class="hljs-string">"transform-vue-jsx"</span>, <span class="hljs-string">"transform-runtime"</span>]
+}
+</code></pre><p><strong>1.2 plugins:</strong></p>
+<p>plugins是告诉babel要使用那些插件，这些插件可以控制如何转换代码。</p>
+<p><a href="https://www.npmjs.com/package/babel-plugin-transform-vue-jsx">transform-vue-jsx:</a> 在vue中使用 <a href="https://www.cnblogs.com/zourong/p/6043914.html">jsx语法</a></p>
+<p><a href="https://www.npmjs.com/package/babel-plugin-transform-runtime">transform-runtime:</a>  babel默认只会转译语法，比如箭头函数，spread。全局对象和全局对象的方法，比如Set Map Object.assign，includes默认是不会转译的。需要加polyfill或者transform-runtime。</p>
+<p><strong>1.3 presets:</strong></p>
+<p>presets 创建预设,主要配置如下:</p>
+<pre><code>{
+     <span class="hljs-attr">"presets"</span>: [
+          [<span class="hljs-string">"env"</span>, options],
+          <span class="hljs-string">"stage-2"</span>
+     ]
+}
+</code></pre><p><strong>options:</strong></p>
+<p>常用options:</p>
+<pre><code>{
+      <span class="hljs-attr">"targets"</span>: {
+        <span class="hljs-attr">"chrome"</span>: <span class="hljs-number">52</span>,
+        <span class="hljs-attr">"browsers"</span>: [<span class="hljs-string">"last 2 versions"</span>, <span class="hljs-string">"safari 7"</span>],
+        <span class="hljs-attr">"node"</span>:<span class="hljs-string">"6.10"</span>
+      }
+      <span class="hljs-string">"modules"</span>: <span class="hljs-literal">false</span>
+}
+</code></pre><p><strong>targets</strong>可以制定兼容浏览器版本，如果设置了browsers，那么就会覆盖targets原本对浏览器的限制配置。</p>
+<p><strong>modules</strong> 放弃使用babel的模块化，使用webpack的模块化,通常配置false</p>
+<p><a href="https://babeljs.io/docs/plugins/preset-env/">更多参考</a></p>
+<p><strong>stage-2:</strong></p>
+<p>不同阶段的转译器之间是包含的关系，preset-stage-0转译器除了包含了preset-stage-1的所有功能还增加了transform-do-expressions插件和transform-function-bind插件，同样preset-stage-1转译器除了包含preset-stage-2的全部功能外还增加了一些额外的功能。    </p>
